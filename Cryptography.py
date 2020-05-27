@@ -1,45 +1,27 @@
-times = 0
-def code(word, num):
-    global times
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    storage = []
-    out = []
-    if type(num) != int:
-        return print("A key number must be entered")
-    if num >= 26 or num <= 0:
-        return print("This number couldn't produce a coded message")
-    if type(word) != str:
-        return print("A key word must be entered")
-    word = word.lower()
-    word = word.replace(" ", "")
-    for i in word:
-        if i not in alphabet:
-            return print("Your message cannot contain non-letters")
-    for i in range(len(word)):
-        storage.append(alphabet.index(word[i]))
-    storage2 = list(map(lambda x: x + num, storage))
-    def lose26(d):
-        for x in d:
-            if x >= 26:
-                out.append(x-26)
-            else:
-                out.append(x)
-        return out
-    storage3 = list(lose26(storage2))
-    coded_word = ""
-    for x in storage3:
-        coded_word += alphabet[x]
-    times = times + 1
-    print(times)
-    return print("Your secret message is: \n" + coded_word)
-while times <= 3:
-    print("Welcome to the Cryptography program. You can input a message and a number less than 26, and this program will generate a secret code for you.")
+def code(word, n):
+    storage = [x for x in word]
+    storage2 = []
+    for i in storage:
+        if i == " ":
+            storage2.append(i)
+        elif i.isupper():
+            storage2.append(chr((ord(i) + n - 65) % 26 +65))
+        elif i.islower():
+            storage2.append(chr((ord(i) + n - 97) % 26 + 97))
+        else:
+            storage2.append(i)
+    return print("Your secret message is: " + ''.join(storage2))
+z = "S"
+while z == "S":
+    print("Welcome to the Cryptography program.")
+    print("You can input a message and a number less than 26, and this program will generate a secret code for you.")
     x = input("Input your word: ")
     y = int(input("Input your number: "))
     code(x, y)
-    if times < 3:
-        print("Let's try it again!")
-    else:
+    z = input("Type 'Q' to (Q)uit the program, or 'S' to (S)tart coding another message.")
+    if z == "Q":
         print("Thanks for playing!")
         break
+    elif z == (not "S") or (not "Q"):
+        print("Type 'Q' to (Q)uit the program, or 'S' to (S)tart coding another message.")
 input()
