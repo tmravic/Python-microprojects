@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 import random
 HP = 5
 finish = 3
