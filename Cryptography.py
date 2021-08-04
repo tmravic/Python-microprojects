@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 def code(word, n):
     storage = [x for x in word]
     storage2 = []
