@@ -5,3 +5,6 @@ This is a little game I made to practice the basics of Python logic. You have 5 
 
 # - Cryptography
 You can input a message and a number less than 26, and this program will generate a secret code for you.
+
+# - Web_Scrape_Wikipedia
+Every day the main page of Wikipedia has some new images. You can run this program every day and it will put today's images on your desktop!
